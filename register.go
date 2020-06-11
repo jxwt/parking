@@ -37,7 +37,7 @@ type RegisterResponse struct {
 	Message string
 }
 
-func Register(req *RegisterRequest, isRelease bool) (string, error) {
+func Register(req *RegisterRequest) (string, error) {
 	data, _ := json.Marshal(req)
 	resp, err := http.Post(req.Url+":8091"+apiRegister,
 		"application/json",
@@ -63,5 +63,5 @@ func Register(req *RegisterRequest, isRelease bool) (string, error) {
 		return "", errors.New(ret.Message)
 	}
 
-	return server, nil
+	return req.Url, nil
 }
