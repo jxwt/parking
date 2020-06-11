@@ -9,10 +9,6 @@ import (
 )
 
 const (
-	secretKey      = "cGhOzFhZGpaccszyEyIiAupsiJERXL18"
-	parkUrlTest    = "http://park.api.jxwutong.cn"
-	parkUrlRelease = "http://park.api.jxwutong.com"
-
 	apiRegister = "/api/parkLot/register"
 )
 
@@ -43,11 +39,7 @@ type RegisterResponse struct {
 
 func Register(req *RegisterRequest, isRelease bool) (string, error) {
 	data, _ := json.Marshal(req)
-	server := parkUrlTest
-	if isRelease {
-		server = parkUrlRelease
-	}
-	resp, err := http.Post(server+":8091"+apiRegister,
+	resp, err := http.Post(req.Url+":8091"+apiRegister,
 		"application/json",
 		strings.NewReader(string(data)))
 	if err != nil {
