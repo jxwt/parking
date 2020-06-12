@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	apiRegister = "/api/parkLot/register"
+	apiRegister = "/api/tenant/register"
 )
 
 type RegisterRequest struct {
