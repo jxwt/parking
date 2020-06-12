@@ -39,7 +39,7 @@ type RegisterResponse struct {
 
 func Register(req *RegisterRequest) (string, error) {
 	data, _ := json.Marshal(req)
-	resp, err := http.Post(req.Url+":8091"+apiRegister,
+	resp, err := http.Post(req.Url+apiRegister,
 		"application/json",
 		strings.NewReader(string(data)))
 	if err != nil {
